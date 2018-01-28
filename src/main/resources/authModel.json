@@ -1,0 +1,14 @@
+{
+  "userId":"test",
+  "accessToken":"0987y-u87@#dghui-lop&tghh",
+  "applicationAcl":
+  [
+    {
+      "name":"test",
+      "appId":"Xcvd",
+      "description":"The access level the user has on the apllication",
+      "version":"1.0",
+      "accessLevel":"Edit"
+    }
+  ]
+}
