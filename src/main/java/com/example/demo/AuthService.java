@@ -13,29 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.Serializable;
 
 @SpringBootApplication
-public class DemoApplication {
+public class AuthService {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(AuthService.class, args);
 	}
 }
 
 @RestController
 class DataController{
 
-    @GetMapping("/info")
-	public ResponseEntity<Info> getInformation(@RequestHeader HttpHeaders headers){
-        System.out.println("userid is "+headers.get("userid"));
-        System.out.println("l5d-hello header "+headers.get("l5d-hello"));
-        System.out.println("token header "+headers.get("token"));
-
-        return new ResponseEntity<Info>(new Info("Hello "), HttpStatus.OK);
-    }
-
     @GetMapping("/token/{userid}")
     public ResponseEntity<String> generateToken(@PathVariable String userid){
-        System.out.println("userid is "+userid);
-        return new ResponseEntity<String>(userid+"--"+Math.random() * 5,HttpStatus.OK);
+
+        return new ResponseEntity<String>( new TokenService().signToken(),HttpStatus.OK);
     }
 }
 
